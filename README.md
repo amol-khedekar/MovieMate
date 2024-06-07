@@ -19,14 +19,8 @@ MovieMate is a web application built using ASP.NET MVC that allows users to brow
   - Book tickets for multiple shows.
   - View booking history.
   
-- **Technology Stack**
+## Technology Stack
   - ASP.NET MVC
   - Entity Framework
   - SQL Server
   - ASP.NET Identity
-
-## Technology Stack
-
-- **Frontend:** ASP.NET MVC
-- **Backend:** C#, Entity Framework
-- **Database:** SQL Server
