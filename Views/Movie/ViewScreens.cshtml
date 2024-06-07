@@ -1,0 +1,67 @@
+﻿<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Movie">Movies</a></li>
+        <li class="breadcrumb-item"><a href="/Movie/Details/@Context.Request.Query["MovieId"]">Movie Details</a></li>
+        <li class="breadcrumb-item"><a href="/Movie/GetTheatersWithMovie/@Context.Request.Query["MovieId"]">Theater</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Show</li>
+    </ol>
+</nav>
+
+<h1 class="text-center ">Select show</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Screen Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Show timing
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+
+        @foreach (var item in ViewBag.screensAndTimings)
+        {
+            <tr>
+                <td>
+
+                    @item.screenName
+                  
+                </td>
+                <td>
+                    @item.screenDescription
+                </td>
+                <td>
+                    @item.showTime
+                </td>
+                <td>
+                    Rs. @item.price
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="ConfirmBooking" asp-route-id="@item.showId"  >Book tickets</a>
+                    @*<a asp-action="Edit" asp-route-id="@item.ScreenId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ScreenId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ScreenId">Delete</a>*@
+                </td>
+            </tr>
+            
+
+           
+
+            
+
+            
+        }
+    </tbody>
+</table>

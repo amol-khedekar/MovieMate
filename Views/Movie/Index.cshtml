@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MovieMate.Models.MovieModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" type="text/css" href="/css/movies/MovieList.css">
+
+<h1 class="text-center">Movies</h1>
+
+@if (this.User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </p>
+}
+
+
+
+<div class="row  px-5">
+    @foreach (var item in Model) {
+        <span class="zoom col-xs-12 col-md-3 my-3">
+            
+            
+                    <span class="card shadow-sm ">
+                        <a asp-action="Details" asp-route-id="@item.movieId"  >
+                            <img class="card-img-top" src="/img/uploads/movies/@(item.movieId+@item.imageExtension)" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.title)</h5>
+                        
+                                @*<span class="text-primary text-decoration-none" onClick="expandDescription(this,@item.movieId)">Show more...</span>
+        *@
+
+
+                            </div>
+                        </a>
+
+                        @if (this.User.IsInRole("Admin"))
+                        {
+                            <span class=" card-footer bg-light row mx-1">
+                                <a class="btn btn-primary w-50" asp-action="Edit" asp-route-id="@item.movieId">Edit</a>
+
+
+                                <a class="btn btn-danger w-50" asp-action="Delete" asp-route-id="@item.movieId">Delete</a>
+
+                            </span>
+
+                        }
+
+                    </span>
+            
+            
+            
+        </span>
+    }
+</div>
+
+@*<script src="/js/movies/MovieList.js"></script>*@

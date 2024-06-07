@@ -1,0 +1,48 @@
+﻿@model MovieMate.Models.MovieModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center text-uppercase">Create</h1>
+
+<h4 class="text-center">Movie</h4>
+<hr />
+<div class="row">
+    <div class=" col-xs-12 col-md-4  offset-md-4 ">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <textarea asp-for="description" class="form-control"></textarea>
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <input name="moviepicture" type="file" accept="image/*" class="form-control"  />
+            </div>
+            @if (ViewBag.errorMsg != null)
+            {
+                <div class="alert alert-danger text-center">
+                    @ViewBag.errorMsg
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary w-100" />
+            </div>
+        </form>
+    </div>
+    <div class=" col-xs-12 col-md-4  offset-md-4 ">
+        <a asp-action="Index">Back to Movies list</a>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
